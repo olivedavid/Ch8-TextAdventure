@@ -114,10 +114,21 @@ public class Game
             case GO:
                 goRoom(command);
                 break;
+                
+            case LOOK:
+                look();
+                break;
+                
+            case EAT:
+                eat();
+                break;
+          
 
             case QUIT:
                 wantToQuit = quit(command);
                 break;
+                
+            
         }
         return wantToQuit;
     }
@@ -163,6 +174,27 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
     }
+    
+    /**
+     * "look" was entered. Look around the room for items, monsters, etc.
+     *  Print what is inside the room
+     */
+    
+    private void look()
+    {
+     System.out.println(currentRoom.getLongDescription());   
+    }
+    
+    /**
+     * "eat" was entered
+     */
+    
+    private void eat()
+    {
+     System.out.println("You have eaten now and you are not hungry anymore");   
+    }
+    
+    
 
     /** 
      * "Quit" was entered. Check the rest of the command to see

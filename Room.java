@@ -61,6 +61,7 @@ public class Room
     public String getLongDescription()
     {
         return "You are " + description + ".\n" + getExitString();
+        // add what is inside the room for the look method
     }
 
     /**

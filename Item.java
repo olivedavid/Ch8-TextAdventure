@@ -10,18 +10,15 @@ public class Item
 {
     // instance variables - replace the example below with your own
     private String itemDescription;
-    private String itemWeight;
-    private String item;
+    private int itemWeight;
+    private String name;
+    private boolean canBePickedUp;
 
     /**
      * Constructor for objects of class Item
      */
-    public Item()
-    {
-        item = null;
-        
-    }
-    public Item(String itemDescription, String itemWeight)
+    
+    public Item(String itemDescription, int itemWeight)
     {
         this.itemDescription = itemDescription;
         this.itemWeight = itemWeight;
@@ -35,8 +32,22 @@ public class Item
      */
     public String getItemDescription()
     {
-     return "this is item1";   
+     return itemDescription;   
     }
+    
+    public int getItemWeight()
+    {
+     return itemWeight;   
+    }
+    
+    public String getName()
+    {
+     return name;   
+    }
+    
+    
+    
+    
     
     
 }

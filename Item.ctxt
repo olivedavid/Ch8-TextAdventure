@@ -1,12 +1,14 @@
 #BlueJ class context
 comment0.target=Item
 comment0.text=\n\ This\ class\ is\ part\ of\ "World\ of\ Zuul"\ project.\ It\ contains\ Items\ that\n\ could\ be\ found\ within\ a\ room\n\n\ @author\ Olive\ Tamondong\n\ @version\ 2017.11.24\n
-comment1.params=
-comment1.target=Item()
+comment1.params=itemDescription\ itemWeight
+comment1.target=Item(java.lang.String,\ int)
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Item\n
-comment2.params=itemDescription\ itemWeight
-comment2.target=Item(java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getItemDescription()
+comment2.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\n
 comment3.params=
-comment3.target=java.lang.String\ getItemDescription()
-comment3.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\n
-numComments=4
+comment3.target=int\ getItemWeight()
+comment4.params=
+comment4.target=java.lang.String\ getName()
+numComments=5

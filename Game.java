@@ -1,8 +1,9 @@
 /**
  *  This class is the main class of the "World of Zuul" application. 
- *  "World of Zuul" is a very simple, text based adventure game.  Users 
- *  can walk around some scenery. That's all. It should really be extended 
- *  to make it more interesting!
+ *  "World of Zuul" is a very simple, text based adventure game.  
+ *  
+ *  Player must find their way trough the World of Zuul and obtain the treasure.
+ *  Certain items must be obtained in order to succeed.  
  * 
  *  To play this game, create an instance of this class and call the "play"
  *  method.
@@ -11,8 +12,8 @@
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2011.08.10
+ * @author  Olive Tamondong
+ * @version 2017.11.24
  */
 
 public class Game 
@@ -36,28 +37,75 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room outside, gates, market, 
+              armory, blacksmith, tavern,
+              theater, physician, inn, 
+              field, stable, forest, 
+              lake, palace, treasury;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        outside = new Room("outside the main gates of a kingdom");
+        gates = new Room(" at the gates entering the kingdom ");
+        market = new Room("in the market");
+        armory = new Room("in the armory");
+        blacksmith = new Room("in the blacksmith's shop");
+        tavern = new Room("in a tavern");
+        theater = new Room("in a theater");
+        physician = new Room("in the physicians home");
+        inn = new Room("in the inn");
+        field = new Room("in a field");
+        stable = new Room("in a stable");
+        forest = new Room("in a forest");
+        lake = new Room("in a lake");
+        palace = new Room("in the palace");
+        treasury = new Room("in the treasury");
         
         // initialise room exits
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
+        outside.setExit("north", gates);
+        
+        gates.setExit("north", market);
+        gates.setExit("south", outside);
+        
+        market.setExit("north", theater);
+        market.setExit("south", gates);
+        
+        armory.setExit("north", physician);
+        armory.setExit("east", blacksmith);
+        
+        blacksmith.setExit("north", inn);
+        blacksmith.setExit("west", armory);
+        
+        tavern.setExit("east", theater);
+        
+        theater.setExit("east", physician);
+        theater.setExit("south", market);
+        theater.setExit("west", tavern);
+        
+        physician.setExit("east", inn);
+        physician.setExit("south", armory);
+        physician.setExit("west", theater);
+        
+        inn.setExit("north", forest);
+        inn.setExit("south", blacksmith);
+        inn.setExit("west", physician);
+        
+        field.setExit("north", lake);
+        field.setExit("east", stable);
+        
+        stable.setExit("east", forest);
+        stable.setExit("west", field);
 
-        theater.setExit("west", outside);
+        forest.setExit("south", inn);
+        forest.setExit("west", stable);
 
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-
-        office.setExit("west", lab);
+        lake.setExit("east", palace);
+        lake.setExit("south", field);
+        
+        palace.setExit("north", treasury);
+        palace.setExit("east", lake);
+        
+        treasury.setExit("south", palace);
+        
 
         currentRoom = outside;  // start game outside
     }
@@ -87,7 +135,7 @@ public class Game
     {
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("World of Zuul is a new, incredibly boring treasure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -144,8 +192,9 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("You are in search for the greatest treasure in the World of Zuul./n " + 
+                            "You are alone. You wander");
+        System.out.println("around at the kingdom.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
